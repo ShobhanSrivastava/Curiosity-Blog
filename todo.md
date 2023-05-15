@@ -1,8 +1,22 @@
-[+] Create directory structure
-[+] Create NPM project and install dependencies
-    - Dependencies
-        - express
-        - ejs express-ejs-layouts
-[+] Express server setup and create server.js
-[.] Git Setup and first commit
-    - Create .gitignore file 
+ - [x] Create directory structure
+ - [x] Create NPM project and install dependencies
+        - Dependencies
+            - express
+            - ejs express-ejs-layouts
+ - [x] Express server setup and create server.js
+ - [x] Git Setup and first commit
+        - Create .gitignore file 
+            - node_modules
+ - [x] Add tailwindcss
+ - [x] Use express-ejs-layouts and set ejs as the template engine
+ - [x] Create ejs layout
+        - navbar
+        - VARIABLE main
+        - footer
+ - [ ] Create pages
+        - [x] home
+        - [x] my blogs
+        - [x] login
+        - [x] register
+        - [ ] write blog
+        - [ ] edit blog
