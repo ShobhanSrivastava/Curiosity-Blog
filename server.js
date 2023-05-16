@@ -1,33 +1,59 @@
-const express = require('express');
+import express from 'express';
+// express library lets you create a node server with little code and has some more features
 const app = express();
-const ejs = require('ejs');
-const expressLayouts = require('express-ejs-layouts');
-const path = require('path');
 
-// Fetch PORT from env
-const PORT = process.env.PORT || 8000;
+app.use(express.json);
+// express-ejs-layouts let you create a common layout file for all the pages
+import expressLayouts from 'express-ejs-layouts';
+import flash from 'express-flash';
+import session from 'express-session';
+import connectMongo from 'connect-mongo';
+const MongoDBStore = connectMongo;
+import path from 'path';
 
-// Set template engine
+// Fetch path from env
+import { PORT, COOKIE_SECRET, DB_CONN } from './app/config/index.js';
+
+// Creating __dirname
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+import connect from './app/config/mongoConnection.js';
+
+// Use expressLayouts to enable layout.ejs as the common layout file for all the pages
 app.use(expressLayouts);
 app.set('views', path.join(__dirname, '/resources/views'));
+// Set template engine
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-    res.render('user/home');
-});
+// Connect to mongodb database
+connect();
 
-app.get('/my-blogs', (req, res) => {
-    res.render('user/myBlogs');
-});
+// Session middleware for creating session for every user
+app.use(session({
+    secret: COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoDBStore.create({
+        mongoUrl: DB_CONN,
+    }),
+    cookie: { maxAge: 24 * 60 * 60 * 1000 } //24 hours
+}));
 
-app.get('/login', (req, res) => {
-    res.render('auth/login');
-});
+app.use(flash());
 
-app.get('/register', (req, res) => {
-    res.render('auth/register');
-});
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+})
 
+// Route handling in a seperate function
+import routes from './app/routes/web.js';
+routes(app);
+
+// Listen to the incoming requests
 app.listen(PORT, () => {
     console.log('Running on PORT', PORT);
 })

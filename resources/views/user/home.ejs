@@ -1,28 +1,12 @@
-<p class="px-2">For you</p>
-<div class="container">
-    <div class="px-4 py-4 border-t-[0.5px] border-gray-200">
-        <p class="text-sm">Author</p>
-        <p class="text-lg">Title</p>
-        <p class="text-xs py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio natus ab, quo architecto iste totam dicta harum eligendi fugit quasi voluptatem nemo eos quia modi nostrum aspernatur est odio soluta, at provident obcaecati laudantium alias animi. Commodi sint, fugit ab modi est doloribus odit quis corrupti nam incidunt facilis culpa!</p>
-    </div>
-    <div class="px-4 py-4 border-t-[0.5px] border-gray-200">
-        <p class="text-sm">Author</p>
-        <p class="text-lg">Title</p>
-        <p class="text-xs py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio natus ab, quo architecto iste totam dicta harum eligendi fugit quasi voluptatem nemo eos quia modi nostrum aspernatur est odio soluta, at provident obcaecati laudantium alias animi. Commodi sint, fugit ab modi est doloribus odit quis corrupti nam incidunt facilis culpa!</p>
-    </div>
-    <div class="px-4 py-4 border-t-[0.5px] border-gray-200">
-        <p class="text-sm">Author</p>
-        <p class="text-lg">Title</p>
-        <p class="text-xs py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio natus ab, quo architecto iste totam dicta harum eligendi fugit quasi voluptatem nemo eos quia modi nostrum aspernatur est odio soluta, at provident obcaecati laudantium alias animi. Commodi sint, fugit ab modi est doloribus odit quis corrupti nam incidunt facilis culpa!</p>
-    </div>
-    <div class="px-4 py-4 border-t-[0.5px] border-gray-200">
-        <p class="text-sm">Author</p>
-        <p class="text-lg">Title</p>
-        <p class="text-xs py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio natus ab, quo architecto iste totam dicta harum eligendi fugit quasi voluptatem nemo eos quia modi nostrum aspernatur est odio soluta, at provident obcaecati laudantium alias animi. Commodi sint, fugit ab modi est doloribus odit quis corrupti nam incidunt facilis culpa!</p>
-    </div>
-    <div class="px-4 py-4 border-t-[0.5px] border-gray-200">
-        <p class="text-sm">Author</p>
-        <p class="text-lg">Title</p>
-        <p class="text-xs py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio natus ab, quo architecto iste totam dicta harum eligendi fugit quasi voluptatem nemo eos quia modi nostrum aspernatur est odio soluta, at provident obcaecati laudantium alias animi. Commodi sint, fugit ab modi est doloribus odit quis corrupti nam incidunt facilis culpa!</p>
+<div class="w-full h-full">
+    <p class="px-2">For you</p>
+    <div class="container">
+        <% blogs.forEach(function(blog) { %>
+            <div class="px-4 py-4 border-t-[0.5px] border-gray-200">
+                <p class="text-sm"><%= blog.author %></p>
+                <p class="text-lg"><%= blog.title %></p>
+                <p class="text-xs py-2"><%- blog.content.split('\n')[0] %></p>
+            </div>
+        <% }) %>
     </div>
 </div>
