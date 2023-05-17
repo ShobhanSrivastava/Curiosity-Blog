@@ -1,3 +1,5 @@
+import mongoose from 'mongoose';
+const { isValidObjectId } = mongoose;
 import { Blog } from '../../models/index.js';
 
 function blogController() {
@@ -10,10 +12,14 @@ function blogController() {
         async getBlog(req, res) {
             const id = req.params.id;
 
+            if(!isValidObjectId(id)) {
+                return res.render('404');
+            }
+
             const blog = await Blog.findById(id);
             console.log(blog);
             if(!blog) {
-                return res.redirect('/');
+                return res.render('404');
             }
 
             res.render('user/blog', { blog: blog });

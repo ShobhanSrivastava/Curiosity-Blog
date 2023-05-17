@@ -27,6 +27,7 @@
     - [x] write blog
        - [x] Setup tinyMCE
     - [ ] edit blog
+    - [x] 404
     - [x] Create Models
        - [x] User
        - [x] Blog

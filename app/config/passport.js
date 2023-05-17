@@ -9,7 +9,8 @@ function init(passport) {
         if(!user) {
             return done(null, false, { message: 'No user found with this email '});
         }
-
+        
+        // Check for valid password
         bcrypt.compare(password, user.password)
         .then(match => {
             if(match) {
@@ -24,10 +25,12 @@ function init(passport) {
         })
     }));
 
+    // Serialise user
     passport.serializeUser((user, done) => {
         done(null, user.email);
     });
 
+    // Deserialise user
     passport.deserializeUser((email, done) => {
         User.findOne({ email: email }, (err, user) => {
             done(err, user);

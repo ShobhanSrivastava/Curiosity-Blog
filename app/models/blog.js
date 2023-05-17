@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-import { Comment } from './index.js';
-
 const blogSchema = new Schema({
     title: { type: String, required: true },
     authorName: { type: String, required: true },

@@ -4,11 +4,13 @@ const app = express();
 
 // express-ejs-layouts let you create a common layout file for all the pages
 import expressLayouts from 'express-ejs-layouts';
+
+// flash binds the data to a single request and us generally used for errors
 import flash from 'express-flash';
 
+// packages for user session and authentication
 import session from 'express-session';
 import passport from 'passport';
-
 import connectMongo from 'connect-mongo';
 const MongoDBStore = connectMongo;
 
@@ -23,9 +25,12 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// DB Connection
 import connect from './app/config/mongoConnection.js';
 
+// JSON data parse
 app.use(express.json());
+// Form data parse
 app.use(express.urlencoded({ extended: false }));
 
 // Use expressLayouts to enable layout.ejs as the common layout file for all the pages
@@ -60,6 +65,7 @@ app.use(passport.session());
 
 app.use(flash());
 
+// Global middleware for adding session and user data to the request
 app.use((req, res, next) => {
     res.locals.session = req.session;
     res.locals.user = req.user;
@@ -69,6 +75,10 @@ app.use((req, res, next) => {
 // Route handling in a seperate function
 import routes from './app/routes/web.js';
 routes(app);
+
+app.use((req, res) => {
+    res.status(404).render('404');
+})
 
 // Listen to the incoming requests
 app.listen(PORT, () => {

@@ -1,7 +1,7 @@
 <div class="w-full h-full px-16 min-h-[90vh]">
     <form id="editor-form" action="/write" method="POST" class="w-full flex flex-col">
         <% if(messages.error) { %>
-            <span><%= messages.error %></span>
+            <span class="text-red-700 text-sm"><%= messages.error %></span>
         <% } %>
         <input id="title" name="title" type="text" placeholder="Enter the title for your article"
         class="text-[3vw] focus:outline-none p-2 w-full border-b-2 border-gray-200 mb-4 rounded">
