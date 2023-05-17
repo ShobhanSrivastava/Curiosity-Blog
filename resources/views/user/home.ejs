@@ -1,12 +1,14 @@
-<div class="w-full h-full">
+<div class="w-[60vw] h-full">
     <p class="px-2">For you</p>
     <div class="container">
         <% blogs.forEach(function(blog) { %>
-            <div class="px-4 py-4 border-t-[0.5px] border-gray-200">
-                <p class="text-sm"><%= blog.author %></p>
-                <p class="text-lg"><%= blog.title %></p>
-                <p class="text-xs py-2"><%- blog.content.split('\n')[0] %></p>
-            </div>
+            <a href="/blog/<%= blog._id %>">
+                <div class="px-4 py-4 border-t-[0.5px] border-gray-200">
+                    <p class="text-sm"><%= blog.author %></p>
+                    <p class="text-lg"><%= blog.title %></p>
+                    <p class="text-xs py-2"><%- blog.content.split('\n')[0] %></p>
+                </div>
+            </a>
         <% }) %>
     </div>
 </div>

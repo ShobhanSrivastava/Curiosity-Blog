@@ -7,7 +7,12 @@
  - [x] Git Setup and first commit
     - Create .gitignore file 
         - node_modules
- - [x] Add tailwindcss
+        - .env
+ - [x] Setup env variables
+    - [x] PORT
+    - [x] DB_CONN_STRING
+    - [x] COOKIE_SECRET
+ - [x] Add tailwindcss using CLI 
  - [x] Use express-ejs-layouts and set ejs as the template engine
  - [x] Create ejs layout
     - navbar
@@ -18,5 +23,44 @@
     - [x] my blogs
     - [x] login
     - [x] register
-    - [ ] write blog
+    - [x] blog
+    - [x] write blog
+       - [x] Setup tinyMCE
     - [ ] edit blog
+    - [x] Create Models
+       - [x] User
+       - [x] Blog
+       - [x] Comment
+ - [x] Controllers: Function for each route
+       - [x] Auth Controller
+       - [x] Blog Controller
+       - [x] Comment Controller
+ - [x] Config
+    - [x] Expose env from a single file
+    - [x] mongoConnection config
+    - [x] passport local stategy setup
+ - [x] Create Auth
+    - [x] Register
+    - [x] Login using passport
+       - [x] Session
+       - [x] MongoStore
+       - [x] Passport
+    - [x] Logout
+ - [x] Routes
+    - [x] Blog
+       - [x] / GET
+       - [x] /blog/:id GET
+       - [x] /write GET
+       - [x] /write POST
+       - [x] my-blogs GET
+    - [x] Auth
+       - [x] login GET
+       - [x] login POST
+       - [x] logout POST
+       - [x] register GET
+       - [x] register POST
+ - [x] Middlewares
+    - [x] guest
+    - [x] user
+    - [x] global middleware to add user and session in the response (To allow response data in the ejs templates)
+ - [x] Install flash for sending request errors

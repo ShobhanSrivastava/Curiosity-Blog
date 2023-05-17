@@ -2,13 +2,16 @@ import express from 'express';
 // express library lets you create a node server with little code and has some more features
 const app = express();
 
-app.use(express.json);
 // express-ejs-layouts let you create a common layout file for all the pages
 import expressLayouts from 'express-ejs-layouts';
 import flash from 'express-flash';
+
 import session from 'express-session';
+import passport from 'passport';
+
 import connectMongo from 'connect-mongo';
 const MongoDBStore = connectMongo;
+
 import path from 'path';
 
 // Fetch path from env
@@ -22,9 +25,16 @@ const __dirname = dirname(__filename);
 
 import connect from './app/config/mongoConnection.js';
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // Use expressLayouts to enable layout.ejs as the common layout file for all the pages
 app.use(expressLayouts);
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, '/resources/views'));
+
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+
 // Set template engine
 app.set('view engine', 'ejs');
 
@@ -42,10 +52,17 @@ app.use(session({
     cookie: { maxAge: 24 * 60 * 60 * 1000 } //24 hours
 }));
 
+// Passport config
+import passportInit from './app/config/passport.js'
+passportInit(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 
 app.use((req, res, next) => {
     res.locals.session = req.session;
+    res.locals.user = req.user;
     next();
 })
 

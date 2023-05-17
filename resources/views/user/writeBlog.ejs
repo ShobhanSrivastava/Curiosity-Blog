@@ -1,0 +1,22 @@
+<div class="w-full h-full px-16 min-h-[90vh]">
+    <form id="editor-form" action="/write" method="POST" class="w-full flex flex-col">
+        <% if(messages.error) { %>
+            <span><%= messages.error %></span>
+        <% } %>
+        <input id="title" name="title" type="text" placeholder="Enter the title for your article"
+        class="text-[3vw] focus:outline-none p-2 w-full border-b-2 border-gray-200 mb-4 rounded">
+        <textarea id="my-expressjs-tinymce-app"></textarea>
+        <input id="content" type="hidden" name="content" />
+        <button id="blog-submit" class="px-4 py-2 border-2 border-black mx-auto mt-8 hover:bg-black hover:text-white rounded">
+            Publish
+        </button>
+    </form>
+</div>
+    
+<script src="/js/addBlog.js"></script>
+
+<!-- Text area matching the selector specified in the TinyMCE configuration -->
+<!-- Script element sourcing TinyMCE -->
+<script type="application/javascript" src= "/tinymce/tinymce.min.js"></script>
+<!-- Script element sourcing the TinyMCE configuration -->
+<script type="application/javascript" src= "/js/my-tinymce-config.js"></script>

@@ -1,2 +1,2 @@
-export { default as homeController } from './homeController.js';
+export { default as blogController } from './blogController.js';
 export { default as authController } from './authController.js';
