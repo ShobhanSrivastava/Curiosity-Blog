@@ -8,7 +8,7 @@ function initRoutes(app) {
     
     // write GET
     app.get('/write', user, (req, res) => {
-        res.render('user/writeBlog');
+        res.render('user/writeBlog', { blog: null });
     })
     // write POST
     app.post('/write', user, blogController().writeBlog);

@@ -6,7 +6,7 @@ function blogController() {
     return {
         async allBlogs(req, res) {
             const blogs = await Blog.find();
-            res.render('user/home', { blogs: blogs });
+            res.render('user/home', { blogs: blogs, blog: null });
         },
 
         async getBlog(req, res) {
@@ -26,7 +26,7 @@ function blogController() {
         },
 
         writeBlog(req, res) {
-            const { title, content } = req.body;
+            const { title, content, description } = req.body;
             console.log(title, content);
 
             if(!title) {
@@ -39,9 +39,15 @@ function blogController() {
                 return res.redirect('/write');
             }
 
+            if(!description || description === '') {
+                req.flash('error', 'Content is required');
+                return res.redirect('/write');
+            }
+
             const blog = new Blog({
                 title,
                 content,
+                description,
                 authorName: req.user.name,
                 authorEmail: req.user.email
             });
@@ -55,6 +61,7 @@ function blogController() {
                 req.flash('error', 'Something went wrong');
                 req.flash('title', title);
                 req.flash('content', content);
+                req.flash('description', description);
                 return res.redirect('/write');
             });
         },
@@ -65,7 +72,7 @@ function blogController() {
             const blogs = await Blog.find({ authorEmail: user.email });
             console.log(blogs);
 
-            return res.render('user/myBlogs', { blogs: blogs });
+            return res.render('user/myBlogs', { blogs: blogs, blog: null });
         }
     }
 }

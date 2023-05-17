@@ -5,7 +5,7 @@ import passport from "passport";
 function authController() {
     return {
         login(req, res) {
-            res.render('auth/login');
+            res.render('auth/login', { blog: null });
         }, 
 
         postLogin(req, res, next) {
@@ -31,7 +31,7 @@ function authController() {
         },
 
         register(req, res) {
-            res.render('auth/register');
+            res.render('auth/register', { blog: null });
         },
 
         async postRegister(req, res) {
