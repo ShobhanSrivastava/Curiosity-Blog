@@ -31,10 +31,10 @@
        - [x] User
        - [x] Blog
        - [x] Comment
- - [x] Controllers: Function for each route
-       - [x] Auth Controller
-       - [x] Blog Controller
-       - [x] Comment Controller
+ - [x] Controllers
+   - [x] Auth Controller
+   - [x] Blog Controller
+   - [ ] Comment Controller
  - [x] Config
     - [x] Expose env from a single file
     - [x] mongoConnection config
