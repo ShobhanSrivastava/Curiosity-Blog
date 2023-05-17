@@ -1,12 +1,19 @@
 import mongoose from 'mongoose';
 const { isValidObjectId } = mongoose;
 import { Blog } from '../../models/index.js';
+import utility from '../../../utility/index.js';
 
 function blogController() {
     return {
         async allBlogs(req, res) {
             const blogs = await Blog.find();
-            res.render('user/home', { blogs: blogs, blog: null });
+            blogs.forEach(blog => {
+                blog.content = utility.shortenContent(utility.removeHTML(blog.content)) + "...";
+            });
+
+            console.log(blogs);
+
+            res.render('user/home', { blogs: blogs });
         },
 
         async getBlog(req, res) {
