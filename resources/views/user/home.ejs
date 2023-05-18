@@ -1,14 +1,33 @@
-<div class="w-[60vw] h-full">
-    <p class="px-2">For you</p>
-    <div class="container">
-        <% blogs.forEach(function(blog) { %>
-            <a href="/blog/<%= blog._id %>">
-                <div class="px-4 py-4 border-t-[0.5px] border-gray-200">
-                    <p class="text-sm"><%= blog.author %></p>
-                    <p class="text-lg"><%= blog.title %></p>
-                    <p class="text-xs py-2"><%- blog.content.split('\n')[0] %></p>
-                </div>
-            </a>
-        <% }) %>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-8">
+            <h2 class="mb-4 text-white">Blogs for you</h1>
+            <ul class="p-4 rounded blog-list" style="background-color: #28282E;">
+                <% blogs.forEach(function(blog) { %>
+                    <li class="blog-card py-2">
+                        <a href="/blog/<%= blog._id %>" class="mb-3">
+                            <div class="col">
+                                <p class="text-white author-name"><%= blog.authorName %></p>
+                                <strong class="text-white blog-title"><%= blog.title %></strong>
+                                <p class="text-white blog-content mt-2"><%- blog.content %></p>
+                            </div>
+                        </a>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+        <!-- <div class="col-4 border-start">
+            <h2 class="mb-4">Trending Blogs</h3>
+            <div class="card col p-2 mb-2">
+                <p class="card-text"><%= blogs[0].author %></p>
+                <h5 class="card-title"><%= blogs[0].title %></h5>
+                <p class="card-text"><%- blogs[0].content %></p>
+            </div>
+            <div class="card col p-2 mb-2">
+                <p class="card-text"><%= blogs[1].author %></p>
+                <h5 class="card-title"><%= blogs[1].title %></h5>
+                <p class="card-text"><%- blogs[1].content %></p>
+            </div>
+        </div> -->
     </div>
 </div>

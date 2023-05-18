@@ -4,9 +4,9 @@ const utility = {
         return contentWithoutHTML;
     },
 
-    shortenContent(content) {
+    shortenContent(content, minLength) {
         const len = content.length;
-        const shortenedContent = content.substring(0, Math.min(len, 500));
+        const shortenedContent = content.substring(0, Math.min(len, minLength));
         return shortenedContent;
     }
 };

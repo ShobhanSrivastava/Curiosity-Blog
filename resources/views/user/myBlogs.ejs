@@ -1,15 +1,24 @@
-<div class="w-[60vw] h-full">
-    <p class="px-2">Your Blogs</p>
-    <div class="container">
-        <% if(blogs) { %>
-        <% blogs.forEach(function(blog) { %>
-            <a href="/blog/<%= blog._id %>">
-                <div class="px-4 py-4 border-t-[0.5px] border-gray-200">
-                    <p class="text-lg"><%= blog.title %></p>
-                    <p class="text-xs py-2"><%- blog.content %></p>
-                </div>
-            </a>
-        <% })} else { %>
+<div class="container py-5">
+    <div class="row">
+        <!-- <div class="col-2"></div> -->
+        <div class="col-8">
+            <h2 class="mb-4 text-white">Your blogs</h1>
+            <% if(blogs) { %>
+                <ul class="px-4 my-5 py-4 rounded blog-list" style="background-color: #28282E;">
+                    <% blogs.forEach(function(blog) { %>
+                        <li class="blog-card py-2">
+                            <a href="/blog/<%= blog._id %>" class="mb-3">
+                                <div class="col">
+                                    <p class="text-white"><%= blog.author %></p>
+                                    <strong class="text-white"><%= blog.title %></strong>
+                                    <p class="text-white  mt-2"><%- blog.content %></p>
+                                </div>
+                            </a>
+                        </li>
+                    <% }) %>
+                </ul>
+        </div>
+        <% } else { %>
             <p>Unleash the power of your words and paint the world with your unique story!</p>
             <a href="/write">
                 <button class="px-4 py-2 border-2 border-black mt-8 hover:bg-black hover:text-white rounded">
@@ -17,5 +26,6 @@
                 </button>
             </a>
         <% } %>
+        <!-- <div class="col-2"></div> -->
     </div>
 </div>

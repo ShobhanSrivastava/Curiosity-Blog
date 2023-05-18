@@ -1,16 +1,24 @@
-<form method="POST" action="/login"
-    class="flex flex-col border-[0.5px] px-16 py-16 rounded drop-shadow-md">
-    <% if(messages.error) { %>
-    <span class="text-red-700 text-sm"><%= messages.error %></span>
-    <% } %>
-    <label class="text-sm">Email Address</label>
-    <input name="email" type="email" placeholder="Enter your email address"
-    class="border-2 border-black mb-2 px-2 focus:outline-none">
-    <label class="text-sm">Password</label>
-    <input name="password" type="password" placeholder="Enter your password"
-    class="border-2 border-black mb-2 px-2">
-    <button type="submit" class="px-4 py-2 border-2 border-black mt-8 hover:bg-black hover:text-white rounded">
-        Login
-    </button>
-    <a href="/register" class="text-sm mt-2">Dont have an account? Create one</a>
-</form>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <form method="POST" action="/login" style="min-width: 350px; background-color: #28282E;" class="p-5 rounded">
+        <h3 class="text-white mb-4">Login</h3>
+        <% if(messages.error) { %>
+        <span class="text-danger"><%= messages.error %></span>
+        <% } %>
+
+        <div class="form-floating mb-3">
+            <input name="email" type="email" placeholder="Enter your email address" class="form-control" id="email">
+            <label for="email">Email Address</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input name="password" type="password" placeholder="Enter your password" class="form-control" id="password">
+            <label for="password">Password</label>
+        </div>
+
+        <div class="d-flex flex-column align-items-center">
+            <button type="submit" class="btn btn-dark" style="background-color: #8C6CF7; color: white;">Login</button>
+            <a href="/register" class="text-decoration-none text-white mt-2">Don't have an account? Create one</a>
+        </div>
+
+    </form>
+</div>

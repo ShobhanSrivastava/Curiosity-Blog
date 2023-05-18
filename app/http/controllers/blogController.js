@@ -8,7 +8,7 @@ function blogController() {
         async allBlogs(req, res) {
             const blogs = await Blog.find();
             blogs.forEach(blog => {
-                blog.content = utility.shortenContent(utility.removeHTML(blog.content)) + "...";
+                blog.content = utility.shortenContent(utility.removeHTML(blog.content), 300) + "...";
             });
 
             console.log(blogs);
@@ -77,6 +77,9 @@ function blogController() {
             const user = req.user.email;
 
             const blogs = await Blog.find({ authorEmail: user.email });
+            blogs.forEach(blog => {
+                blog.content = utility.shortenContent(utility.removeHTML(blog.content), 300) + "...";
+            });
             console.log(blogs);
 
             return res.render('user/myBlogs', { blogs: blogs, blog: null });
