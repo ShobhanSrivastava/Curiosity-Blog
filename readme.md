@@ -23,7 +23,6 @@ npm run dev
 
 ## Working demo
 
-<figure class="video_container">
-  <iframe src="https://www.youtube.com/embed/SZ6tW1ELGaI" frameborder="0" allowfullscreen="true"></iframe>
-</figure>
+https://github.com/ShobhanSrivastava/Curiosity-Blog/assets/76567059/156f04d7-9b81-4d48-887c-45fffe4c6190
+
 
