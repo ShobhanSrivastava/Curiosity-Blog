@@ -1,8 +1,10 @@
-import { blogController, authController } from "../http/controllers/index.js";
+import { blogController, authController, commentController } from "../http/controllers/index.js";
 import checkAuthenticated from "../http/middlewares/guest.js";
 import user from "../http/middlewares/user.js";
 
 function initRoutes(app) {
+    app.post('/comment', user, commentController().addComment);
+
     // my-blogs route GET
     app.get('/my-blogs', user, blogController().myBlogs);
     

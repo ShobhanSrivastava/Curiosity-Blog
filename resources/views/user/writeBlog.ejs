@@ -7,8 +7,26 @@
                     <span class="text-danger"><%= messages.error %></span>
                 <% } %>
                 <div class="form-floating mb-4">
-                    <input id="title" name="title" type="text" placeholder="Enter the title for your article" class="form-control">
+                    <input 
+                    id="title" 
+                    name="title" 
+                    type="text" 
+                    placeholder="Enter the title for your article" 
+                    class="form-control"
+                    value="<%= messages.title %>"
+                    >
                     <label for="title">Title</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input 
+                    id="description" 
+                    name="description" 
+                    type="text" 
+                    placeholder="Enter the description for your article" 
+                    class="form-control"
+                    value="<%= messages.description %>"
+                    >
+                    <label for="title">Description</label>
                 </div>
                 <textarea id="my-expressjs-tinymce-app"></textarea>
                 <input id="content" type="hidden" name="content" />

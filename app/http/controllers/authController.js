@@ -31,7 +31,7 @@ function authController() {
         },
 
         register(req, res) {
-            res.render('auth/register', { blog: null });
+            res.render('auth/register');
         },
 
         async postRegister(req, res) {

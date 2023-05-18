@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 const { isValidObjectId } = mongoose;
-import { Blog } from '../../models/index.js';
+import { Blog, Comment } from '../../models/index.js';
 import utility from '../../../utility/index.js';
 
 function blogController() {
@@ -23,13 +23,26 @@ function blogController() {
                 return res.render('404');
             }
 
-            const blog = await Blog.findById(id);
-            console.log(blog);
+            const blog = await Blog.findById(id
+            //     , (err) => {
+            //     req.flash('error', 'Something went wrong!');
+            //     return res.render('/');
+            // }
+            );
+
             if(!blog) {
                 return res.render('404');
             }
 
-            res.render('user/blog', { blog: blog });
+            const comments = await Comment.find({ blog_id: id }
+            //     , err => {
+            //     return res.render('/404');
+            // }
+            );
+
+            console.log(comments);
+
+            return res.render('user/blog', { blog: blog, comments: comments });
         },
 
         writeBlog(req, res) {
@@ -55,14 +68,14 @@ function blogController() {
                 title,
                 content,
                 description,
-                authorName: req.user.name,
-                authorEmail: req.user.email
+                author_name: req.user.name,
+                author_email: req.user.email
             });
 
             blog.save()
             .then(savedBlog => {
                 console.log(savedBlog);
-                return res.redirect(`/${savedBlog._id}`);
+                return res.redirect(`blog/${savedBlog._id}`);
             })
             .catch(err => {
                 req.flash('error', 'Something went wrong');
@@ -82,7 +95,7 @@ function blogController() {
             });
             console.log(blogs);
 
-            return res.render('user/myBlogs', { blogs: blogs, blog: null });
+            return res.render('user/myBlogs', { blogs: blogs });
         }
     }
 }

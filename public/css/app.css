@@ -18,11 +18,11 @@ body {
   font-size: 15px;
 }
 
-.blog-title {
-  padding: 0;
+.blog-card {
+  border-bottom: 2px solid #5DCD8E;
 }
 
-.blog-card {
+.comment-card {
   border-bottom: 2px solid #5DCD8E;
 }
 
