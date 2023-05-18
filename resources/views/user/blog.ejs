@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8 my-5 rounded px-4 py-5" style="background-color: #28282E;">
-            <div style="display: flex; gap: 10px;">
+        <div class="col-md-8 my-5 rounded p-5" style="background-color: #28282E;">
+            <div style="display:flex; gap:10px;">
                 <span class="material-symbols-outlined text-white">account_circle</span>
                 <p class="text-white"><%= blog.authorName %></p>
             </div>        
@@ -10,6 +10,25 @@
             <article id="article" class="text-white my-5">
                 <%- blog.content %>
             </article>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 my-5 rounded px-4 py-5" style="background-color: #28282E;">
+            <h2 class="text-white">Comments</h2>
+            <form class="navbar-dark py-3" method="post" action="/comment">
+                <div class="container">
+                    <div class="custom-comment-box">
+                        <textarea class="form-control" name="content" id="comment-box" cols="30" rows="5" placeholder="Enter your comment"></textarea>
+                    </div>
+                    <input name="blog_id" type="hidden" value="<%= blog._id %>">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary mt-3" type="submit"
+                        style="background-color: #8C6CF7;">Comment</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="col-md-2"></div>
     </div>
