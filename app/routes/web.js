@@ -1,4 +1,4 @@
-import { blogController, authController, commentController } from "../http/controllers/index.js";
+import { articleController, authController, commentController } from "../http/controllers/index.js";
 import checkAuthenticated from "../http/middlewares/guest.js";
 import user from "../http/middlewares/user.js";
 
@@ -6,14 +6,14 @@ function initRoutes(app) {
     app.post('/comment', user, commentController().addComment);
 
     // my-blogs route GET
-    app.get('/my-blogs', user, blogController().myBlogs);
+    app.get('/my-blogs', user, articleController().myArticles);
     
     // write GET
     app.get('/write', user, (req, res) => {
-        res.render('user/writeBlog', { blog: null });
+        res.render('user/writeArticle', { blog: null });
     })
     // write POST
-    app.post('/write', user, blogController().writeBlog);
+    app.post('/write', user, articleController().writeArticle);
 
     // login route GET
     app.get('/login', checkAuthenticated, authController().login);
@@ -29,9 +29,9 @@ function initRoutes(app) {
     app.post('/logout', authController().logout);
 
     // get blog with id GET
-    app.get('/blog/:id', blogController().getBlog);
+    app.get('/blog/:id', articleController().getArticle);
     // home GET
-    app.get('/', blogController().allBlogs);
+    app.get('/', articleController().allArticles);
 }
 
 export default initRoutes;

@@ -1,17 +1,16 @@
 <div class="container py-5">
     <div class="row">
-        <!-- <div class="col-2"></div> -->
         <div class="col-8">
-            <h2 class="mb-4 text-white">Your blogs</h1>
-            <% if(blogs) { %>
+            <h2 class="mb-4 text-white">Your Articles</h1>
+            <% if(articles) { %>
                 <ul class="px-4 my-5 py-4 rounded blog-list" style="background-color: #28282E;">
-                    <% blogs.forEach(function(blog) { %>
+                    <% articles.forEach(function(article) { %>
                         <li class="blog-card py-2">
-                            <a href="/blog/<%= blog._id %>" class="mb-3">
+                            <a href="/blog/<%= article._id %>" class="mb-3">
                                 <div class="col">
-                                    <p class="text-white"><%= blog.author %></p>
-                                    <strong class="text-white"><%= blog.title %></strong>
-                                    <p class="text-white  mt-2"><%- blog.content %></p>
+                                    <p class="text-white"><%= article.author %></p>
+                                    <strong class="text-white"><%= article.title %></strong>
+                                    <p class="text-white  mt-2"><%- article.content %></p>
                                 </div>
                             </a>
                         </li>
@@ -22,7 +21,7 @@
             <p>Unleash the power of your words and paint the world with your unique story!</p>
             <a href="/write">
                 <button class="px-4 py-2 border-2 border-black mt-8 hover:bg-black hover:text-white rounded">
-                    Write your first blog
+                    Write your first article
                 </button>
             </a>
         <% } %>

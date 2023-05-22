@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
 %>
 <body style="background-color: #1C1C24;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-lg py-3"
@@ -28,9 +28,11 @@
             </div>
         </nav>    
         
+        <!-- main begins -->
         <main class="min-vh-100">
             <%- body %>
         </main>
+        <!-- main ends -->
         
         <%- include('partials/footer.ejs') %>
     
